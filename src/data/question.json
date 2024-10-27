@@ -1,0 +1,298 @@
+[
+    {
+      "id": 975,
+      "question": "Where is the correct place to insert a JavaScript?",
+      "description": null,
+      "answers": {
+        "answer_a": "The \u003Chead\u003E section",
+        "answer_b": "The \u003Cbody\u003E section",
+        "answer_c": "The \u003Cfooter\u003E",
+        "answer_d": "Both the \u003Chead\u003E section and the \u003Cbody\u003E section are correct"
+        
+      },
+      "multiple_correct_answers": "false",
+      "correct_answers": {
+        "answer_a_correct": "false",
+        "answer_b_correct": "false",
+        "answer_c_correct": "false",
+        "answer_d_correct": "true"
+        
+      },
+      "correct_answer": "answer_d",
+      "explanation": null,
+      "tip": null,
+      "tags": [
+        {
+          "name": "JavaScript"
+        }
+      ],
+      "category": "Code",
+      "difficulty": "Easy"
+    },
+    {
+      "id": 984,
+      "question": "How does a FOR loop start?",
+      "description": null,
+      "answers": {
+        "answer_a": "for i = 1 to 5",
+        "answer_b": "for (i = 0; i \u003C= 5; i++)",
+        "answer_c": "for (i \u003C= 5; i++)",
+        "answer_d": "for (i = 0; i \u003C= 5)"
+       
+      },
+      "multiple_correct_answers": "false",
+      "correct_answers": {
+        "answer_a_correct": "false",
+        "answer_b_correct": "true",
+        "answer_c_correct": "false",
+        "answer_d_correct": "false"
+        
+      },
+      "correct_answer": "answer_b",
+      "explanation": null,
+      "tip": null,
+      "tags": [
+        {
+          "name": "JavaScript"
+        }
+      ],
+      "category": "Code",
+      "difficulty": "Easy"
+    },
+    {
+      "id": 979,
+      "question": "How do you create a function in JavaScript?",
+      "description": null,
+      "answers": {
+        "answer_a": "function myFunction()",
+        "answer_b": "function:myFunction()",
+        "answer_c": "function = myFunction()",
+        "answer_d": null
+        
+      },
+      "multiple_correct_answers": "false",
+      "correct_answers": {
+        "answer_a_correct": "true",
+        "answer_b_correct": "false",
+        "answer_c_correct": "false",
+        "answer_d_correct": "false"
+        
+      },
+      "correct_answer": "answer_a",
+      "explanation": null,
+      "tip": null,
+      "tags": [
+        {
+          "name": "JavaScript"
+        }
+      ],
+      "category": "Code",
+      "difficulty": "Easy"
+    },
+    {
+      "id": 981,
+      "question": "How to write an IF statement in JavaScript?",
+      "description": null,
+      "answers": {
+        "answer_a": "if i = 5 then",
+        "answer_b": "if i = 5",
+        "answer_c": "if i == 5 then",
+        "answer_d": "if (i == 5)"
+      
+      },
+      "multiple_correct_answers": "false",
+      "correct_answers": {
+        "answer_a_correct": "false",
+        "answer_b_correct": "false",
+        "answer_c_correct": "false",
+        "answer_d_correct": "true"
+       
+      },
+      "correct_answer": "answer_d",
+      "explanation": null,
+      "tip": null,
+      "tags": [
+        {
+          "name": "JavaScript"
+        }
+      ],
+      "category": "Code",
+      "difficulty": "Easy"
+    },
+    {
+      "id": 978,
+      "question": "How do you write \"Hello World\" in an alert box?",
+      "description": null,
+      "answers": {
+        "answer_a": "msgBox(\"Hello World\");",
+        "answer_b": "alert(\"Hello World\");",
+        "answer_c": "msg(\"Hello World\");",
+        "answer_d": "alertBox(\"Hello World\");"
+       
+      },
+      "multiple_correct_answers": "false",
+      "correct_answers": {
+        "answer_a_correct": "false",
+        "answer_b_correct": "true"
+        
+      },
+      "correct_answer": "answer_b",
+      "explanation": null,
+      "tip": null,
+      "tags": [
+        {
+          "name": "JavaScript"
+        }
+      ],
+      "category": "Code",
+      "difficulty": "Easy"
+    },
+    {
+      "id": 991,
+      "question": "JavaScript is the same as Java.",
+      "description": null,
+      "answers": {
+        "answer_a": "False",
+        "answer_b": "True"
+       
+      },
+      "multiple_correct_answers": "false",
+      "correct_answers": {
+        "answer_a_correct": "true",
+        "answer_b_correct": "false",
+        "answer_c_correct": "false",
+        "answer_d_correct": "false"
+        
+      },
+      "correct_answer": "answer_a",
+      "explanation": null,
+      "tip": null,
+      "tags": [
+        {
+          "name": "JavaScript"
+        }
+      ],
+      "category": "Code",
+      "difficulty": "Easy"
+    },
+    {
+      "id": 982,
+      "question": "How to write an IF statement for executing some code if \"i\" is NOT equal to 5?",
+      "description": null,
+      "answers": {
+        "answer_a": "if (i != 5)",
+        "answer_b": "if (i \u003C\u003E 5)",
+        "answer_c": "if i =! 5 then",
+        "answer_d": "if i \u003C\u003E 5"
+       
+      },
+      "multiple_correct_answers": "false",
+      "correct_answers": {
+        "answer_a_correct": "true",
+        "answer_b_correct": "false",
+        "answer_c_correct": "false",
+        "answer_d_correct": "false"
+        
+      },
+      "correct_answer": "answer_a",
+      "explanation": null,
+      "tip": null,
+      "tags": [
+        {
+          "name": "JavaScript"
+        }
+      ],
+      "category": "Code",
+      "difficulty": "Easy"
+    },
+    {
+      "id": 974,
+      "question": "What is the correct JavaScript syntax to change the content of the HTML element below?",
+      "description": null,
+      "answers": {
+        "answer_a": "#demo.innerHTML = \"Hello World!\";",
+        "answer_b": "document.getElementById(\"demo\").innerHTML = \"Hello World!\";",
+        "answer_c": "document.getElement(\"p\").innerHTML = \"Hello World!\";",
+        "answer_d": "document.getElementByName(\"p\").innerHTML = \"Hello World!\";"
+        
+      },
+      "multiple_correct_answers": "false",
+      "correct_answers": {
+        "answer_a_correct": "false",
+        "answer_b_correct": "true",
+        "answer_c_correct": "false",
+        "answer_d_correct": "false"
+        
+      },
+      "correct_answer": "answer_b",
+      "explanation": null,
+      "tip": null,
+      "tags": [
+        {
+          "name": "JavaScript"
+        }
+      ],
+      "category": "Code",
+      "difficulty": "Easy"
+    },
+    {
+      "id": 993,
+      "question": "Which event occurs when the user clicks on an HTML element?",
+      "description": null,
+      "answers": {
+        "answer_a": "onchange",
+        "answer_b": "onmouseclick",
+        "answer_c": "onmouseover",
+        "answer_d": "onclick"
+        
+      },
+      "multiple_correct_answers": "false",
+      "correct_answers": {
+        "answer_a_correct": "false",
+        "answer_b_correct": "false",
+        "answer_c_correct": "false",
+        "answer_d_correct": "true"
+       
+      },
+      "correct_answer": "answer_d",
+      "explanation": null,
+      "tip": null,
+      "tags": [
+        {
+          "name": "JavaScript"
+        }
+      ],
+      "category": "Code",
+      "difficulty": "Easy"
+    },
+    {
+      "id": 976,
+      "question": "What is the correct syntax for referring to an external script called \"xxx.js\"?",
+      "description": null,
+      "answers": {
+        "answer_a": "\u003Cscript name=\"xxx.js\"\u003E",
+        "answer_b": "\u003Cscript src=\"xxx.js\"\u003E",
+        "answer_c": "\u003Cscript href=\"xxx.js\"\u003E",
+        "answer_d": "\u003Cscript declare=\"xxx.js\"\u003E"
+        
+      },
+      "multiple_correct_answers": "false",
+      "correct_answers": {
+        "answer_a_correct": "false",
+        "answer_b_correct": "true",
+        "answer_c_correct": "false",
+        "answer_d_correct": "false"
+        
+      },
+      "correct_answer": "answer_b",
+      "explanation": null,
+      "tip": null,
+      "tags": [
+        {
+          "name": "JavaScript"
+        }
+      ],
+      "category": "Code",
+      "difficulty": "Easy"
+    }
+  ]
