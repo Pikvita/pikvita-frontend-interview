@@ -3,7 +3,7 @@ import axios from 'axios'
 const baseUrl = import.meta.env.VITE_QUIZ_BASEURL
 const apiKey = import.meta.env.VITE_QUIZ_API_KEY
 
-export const fetchQuizQuestions = async () => {
+export const fetchQuizData = async () => {
   try {
     const response = await axios.get(`${baseUrl}/questions`, {
       params: {

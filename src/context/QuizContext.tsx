@@ -1,9 +1,9 @@
 import { createContext, useState, useEffect, ReactNode } from 'react'
-import { fetchQuizQuestions } from '../api/quizApi'
+import { fetchQuizData } from '../api/quizApi'
 
 // Define the shape of the context data
 interface QuizContextType {
-  questions: unknown[]
+  quizQuesData: unknown[]
   loading: boolean
   error: string | null
 }
@@ -13,27 +13,27 @@ export const QuizContext = createContext<QuizContextType | undefined>(undefined)
 
 // Create a provider component
 export const QuizProvider = ({ children }: { children: ReactNode }) => {
-  const [questions, setQuestions] = useState<unknown[]>([])
+  const [quizQuesData, setQuizQuesData] = useState<unknown[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    const getQuestions = async () => {
+    const getQuesData = async () => {
       try {
-        const data = await fetchQuizQuestions()
-        setQuestions(data)
+        const data = await fetchQuizData()
+        setQuizQuesData(data)
       } catch (err) {
-        setError('Failed to fetch quiz questions')
+        setError('Failed to fetch quiz ques data')
       } finally {
         setLoading(false)
       }
     }
 
-    getQuestions()
+    getQuesData()
   }, [])
 
   return (
-    <QuizContext.Provider value={{ questions, loading, error }}>
+    <QuizContext.Provider value={{ quizQuesData, loading, error }}>
       {children}
     </QuizContext.Provider>
   )
