@@ -1,5 +1,13 @@
+import { useQuiz } from "../../hooks/useQuiz"
+
 const Home = () => {
-  return <div className="">Home</div>
+
+  const quesData = useQuiz();
+  console.log("Data is here=>", quesData);
+  
+  return (
+    <div>Home</div>
+  )
 }
 
 export default Home

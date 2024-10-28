@@ -14,7 +14,6 @@ export const fetchQuizQuestions = async () => {
         tags: 'JavaScript',
       },
     })
-    console.log('Quiz questions=>', response.data)
     return response.data
   } catch (error) {
     console.error('Error fetching quiz questions:', error)
