@@ -3,7 +3,7 @@ import React from 'react';
 
 const TimeSubmit: React.FC = () => {
     return (
-        <div className="container mx-auto p-4 max-w-screen-xl">
+        <div className="container mx-auto p-4 pt-[3rem]  max-w-screen-lg">
             <div className="flex items-center justify-between p-4 border w-full bg-white">
                 <div className="flex items-center space-x-2">
                     <FaClock className="text-gray-600 h-6 w-6" />

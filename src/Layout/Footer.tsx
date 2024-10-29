@@ -2,13 +2,11 @@ import React from 'react'
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-black text-white p-4 fixed bottom-0 left-0 w-full">
+    <footer className="bg-black text-white p-4 fixed  bottom-0 left-0 w-full">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
-            <h3 className="text-lg font-semibold">Pikvita Technologies Private Limited.</h3>
-            <p>Koramangala, Bengaluru</p>
-            <a href="mailto:support@pikvita.com" className="text-primary-500">support@pikvita.com</a>
+          <div className=" text-md mb-4 md:mb-0">
+            <h3 className="font-sm">Pikvita Technologies Private Limited.</h3>
           </div>
           <ul className="flex flex-col md:flex-row items-center mb-4 md:mb-0">
             <li className="mx-2">

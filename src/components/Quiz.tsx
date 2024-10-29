@@ -8,7 +8,7 @@ const Quiz: React.FC = () => {
   return (
     <>
       <TimeSubmit />
-      <div className="container mx-auto p-4 max-w-screen-xl">
+      <div className="container mx-auto p-4 max-w-screen-lg">
         <div className="flex flex-col items-center justify-between p-4 border w-full bg-white">
           <div className="flex justify-between w-full">
             <div className="w-10/12">
