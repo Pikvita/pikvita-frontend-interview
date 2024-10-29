@@ -180,6 +180,20 @@
 .answers-summary li {
   margin-bottom: 20px;
 }
+.correct {
+  background-color: #d4edda; /* Light green for correct answers */
+  color: #155724; /* Dark green text */
+}
+
+.incorrect {
+  background-color: #f8d7da; /* Light red for incorrect answers */
+  color: #721c24; /* Dark red text */
+}
+
+.feedback {
+  color: #721c24; /* Dark red text for feedback */
+  font-weight: bold;
+}
 /* src/styles/App.css */
 .footer {
   text-align: center;
