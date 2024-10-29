@@ -1,9 +1,226 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* General styles for the quiz page */
+.quiz-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh; /* Full height of the viewport */
+  background-color: #f7f7f7; /* Light background color */
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+/* src/styles/App.css */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #007bff; /* Change to your preferred color */
+  color: white;
+}
+
+.header .logo {
+  display: flex;
+  align-items: center;
+}
+
+.header .logo .app-title {
+  margin-left: 0.5rem; /* Space between the logo and title */
+  font-size: 1.5rem; /* Adjust as needed */
+}
+
+.header .navigation a {
+  color: white;
+  margin: 0 1rem;
+  text-decoration: none;
+}
+
+.header .navigation a:hover {
+  text-decoration: underline;
+}
+
+/* Styles for the question card */
+.question-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  width: 100%;
+  max-width: 600px; /* Maximum width for larger screens */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transitions for hover effect */
+  animation: fadeIn 0.5s ease; /* Animation for appearance */
+}
+.progress-bar {
+  width: 100%;
+  background-color: #e0e0e0;
+  height: 10px;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #4caf50;
+  border-radius: 10px;
+  transition: width 0.3s;
+}
+
+/* Hover effect for the question card */
+.question-card:hover {
+  transform: scale(1.02); /* Slightly increase size on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+}
+
+/* Styles for the question text */
+.question-text {
+  font-size: 1.5rem;
+  margin-bottom: 20px; /* Space between question and options */
+  color: #333; /* Darker text color for better readability */
+}
+
+/* Styles for the options */
+.options-list {
+  list-style: none; /* Remove default list style */
+  padding: 0; /* Remove padding */
+}
+
+/* Styles for each option */
+.option-item {
+  background-color: #e0e0e0; /* Light background for options */
+  border-radius: 5px;
+  padding: 15px;
+  margin: 10px 0; /* Space between options */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Transition for hover effect */
+}
+
+/* Selected state for options */
+.option-item.selected {
+  background-color: #4caf50; /* Highlight selected option */
+  color: white; /* Change text color for better visibility */
+}
+
+/* Hover effect for options */
+.option-item:hover {
+  background-color: #d0d0d0; /* Darker background on hover */
+}
+
+/* Button styles */
+.button-container {
+  display: flex;
+  justify-content: space-between; /* Space buttons on either side */
+  width: 100%;
+  margin-top: 20px; /* Space above buttons */
+}
+
+.button {
+  background-color: #3f51b5; /* Primary color for buttons */
+  color: white; /* White text */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 20px; /* Padding */
+  cursor: pointer; /* Pointer cursor */
+  transition: background-color 0.3s ease; /* Transition for hover effect */
+}
+
+/* Hover effect for buttons */
+.button:hover {
+  background-color: #303f9f; /* Darker shade on hover */
+}
+/* styles.css */
+
+.results-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  background-color: #f4f6f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.score-summary h2 {
+  font-size: 2rem;
+  color: #4caf50;
+}
+
+.button-group {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.retry-button, .review-button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+.retry-button {
+  background-color: #3f51b5;
+}
+
+.review-button {
+  background-color: #009688;
+}
+
+.answers-summary {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.answers-summary h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.answers-summary li {
+  margin-bottom: 20px;
+}
+.correct {
+  background-color: #d4edda; /* Light green for correct answers */
+  color: #155724; /* Dark green text */
+}
+
+.incorrect {
+  background-color: #f8d7da; /* Light red for incorrect answers */
+  color: #721c24; /* Dark red text */
+}
+
+.feedback {
+  color: #721c24; /* Dark red text for feedback */
+  font-weight: bold;
+}
+/* src/styles/App.css */
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #333;
+  color: #fff;
+  margin-top: auto; /* Push footer to bottom */
+}
+
+.footer .footer-links a {
+  color: #ccc;
+  margin: 0 0.5rem;
+  text-decoration: none;
+}
+
+.footer .footer-links a:hover {
+  color: #fff;
+}
+
+/* Animation for fade-in effect */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-20px); /* Start from above */
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0); /* End at original position */
+  }
 }
