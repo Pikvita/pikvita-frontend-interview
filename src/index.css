@@ -2,8 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Gilroy';
+  font-weight: 400;
+  src: url('./assets/fonts/Gilroy-Light.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  font-weight: 700;
+  src: url('./assets/fonts/Gilroy-ExtraBold.otf') format('truetype');
+}
+
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: 'Gilroy', sans-serif;
 }
