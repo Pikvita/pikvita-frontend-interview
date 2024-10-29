@@ -5,7 +5,11 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button = ({ children, variant = 'primary', ...rest }: ButtonProps) => {
-  return <button {...rest}>{children}</button>;
+  return (
+    <button className={`btn-${variant}`} {...rest}>
+      {children}
+    </button>
+  );
 };
 
 export default Button;

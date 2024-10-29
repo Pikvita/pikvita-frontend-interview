@@ -21,7 +21,7 @@ const Input = ({
   const errorClass = errorClassName + 'rest goes here';
   return (
     <div>
-      {label && <label className={labelClass} htmlFor={rest.name}></label>}
+      {label && <label className={labelClass} htmlFor={rest.name}>{label}</label>}
       <input {...rest} />
       {hasError && <p className={errorClass}>{errorMessage}</p>}
     </div>
