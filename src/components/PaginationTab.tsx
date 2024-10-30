@@ -43,8 +43,8 @@ const PaginationTab: React.FC<PaginationTabProps> = ({ totalPages = 10 }) => {
             key={pageNumber}
             onClick={() => handleClick(pageNumber)}
             className={`px-4 py-2 border rounded-lg font-semibold ${
-              currentPage === pageNumber ? 'bg-green-900 text-white' : 'bg-white text-gray-700'
-            } hover:bg-gray-200`}
+              currentPage === pageNumber ? 'bg-primary-700 text-white' : 'bg-white text-gray-700'
+            } hover:bg-primary-600 hover:text-white`}
           >
             {pageNumber}
           </button>

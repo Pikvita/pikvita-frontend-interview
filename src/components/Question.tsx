@@ -46,9 +46,9 @@ const Question: React.FC = () => {
             disabled={isSubmitted}
             className={`flex items-center justify-center p-3 border rounded-lg font-semibold ${
               isOptionSelected(option.id)
-                ? 'bg-blue-600 text-white' 
+                ? 'bg-primary-800 text-white' 
                 : 'bg-gray-100 text-gray-700'
-            } hover:bg-blue-500 hover:text-white transition duration-150
+            } hover:bg-primary-600 hover:text-white transition duration-150
             ${isSubmitted ? 'cursor-not-allowed opacity-60' : ''}`}
           >
             {option.text}
