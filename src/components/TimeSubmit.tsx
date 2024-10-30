@@ -1,6 +1,7 @@
 import { FaClock } from 'react-icons/fa';
 import { useQuiz } from '../hooks/useQuiz';
 import { useNavigate } from 'react-router-dom';
+import Timer from './Timer';
 
 const TimeSubmit: React.FC = () => {
   const { calculateScore, setIsSubmitted, isSubmitted } = useQuiz();
@@ -23,7 +24,7 @@ const TimeSubmit: React.FC = () => {
           <FaClock className="text-gray-600 h-6 w-6" />
           <div className="flex flex-col">
             <span className="text-gray-600 text-sm">Time remaining</span>
-            <span className="font-semibold text-lg text-gray-900">14:44:00</span>
+            <Timer duration={60 * 10} onTimeUp={handleSubmit} isSubmitted={isSubmitted} />
           </div>
         </div>
         <div>
