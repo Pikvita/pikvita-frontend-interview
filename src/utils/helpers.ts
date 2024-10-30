@@ -1,18 +1,22 @@
-/**
- * Generates a random alphanumeric ID of specified length.
- * @param length The length of the generated ID. Default is 10.
- * @returns A random alphanumeric ID string.
- */
-export const generateRandomId = (length: number = 10): string => {
-  return Math.random().toString(36).substring(2, length);
-};
+import axios from 'axios';
 
-/**
- * Formats a date using the specified format string.
- * @param format The format string specifying how the date should be formatted.
- * @param date The Date object to format.
- * @returns The formatted date string.
- */
-export const formatDate = (format: string, date: Date): string => {
-  return new Intl.DateTimeFormat(format).format(date);
+const API_URL = 'https://quizapi.io/api/v1/questions';
+const API_KEY = 'M7RT7dicTsTgRWHPM4LqiwuNuiHK9VmtPIuFZOnY';
+
+export const fetchQuizQuestions = async () => {
+    try {
+        const response = await axios.get(API_URL, {
+            params: {
+                apiKey: API_KEY,
+                category: 'code',
+                difficulty: 'Easy',
+                limit: 10,
+                tags: 'JavaScript'
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching quiz questions:', error);
+        throw error;
+    }
 };
