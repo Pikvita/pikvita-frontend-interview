@@ -1,15 +1,23 @@
-import { Outlet } from 'react-router-dom'
-import Header from '../Layout/Header'
-import Footer from '../Layout/Footer'
+import { Outlet } from 'react-router-dom';
+import Header from '../Layout/Header';
+import Footer from '../Layout/Footer';
 
 const Root = () => {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
+      {/* Header */}
       <Header />
-      <Outlet />
+
+      {/* Main Content Area */}
+      <main className="flex-grow container mx-auto p-4">
+        <Outlet />
+      </main>
+
+      {/* Footer */}
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Root
+export default Root;
+
