@@ -26,6 +26,9 @@ const TimeSubmit: React.FC = () => {
             <span className="font-semibold text-lg text-gray-900">14:44:00</span>
           </div>
         </div>
+        <div>
+          <h2 className="font-semibold text-2xl text-primary-800">Pikvita's Quiz</h2>
+        </div>
         <div className="flex space-x-4">
           {!isSubmitted && (
             <button 

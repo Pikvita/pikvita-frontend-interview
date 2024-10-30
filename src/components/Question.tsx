@@ -1,5 +1,6 @@
 import { useQuiz } from '../hooks/useQuiz';
 import { FaQuestionCircle } from 'react-icons/fa';
+import { ThreeDots } from 'react-loader-spinner';
 
 const Question: React.FC = () => {
   const { 
@@ -10,11 +11,17 @@ const Question: React.FC = () => {
     isSubmitted 
   } = useQuiz();
 
-  if (questions.length === 0) return <div>Loading...</div>;
+  if (questions.length === 0) {
+    return (
+      <div className="flex justify-center items-center h-full">
+        <ThreeDots color="#061b44" height={80} width={80} />
+      </div>
+    );
+  }
 
   const question = questions[currentQuestion];
   const options = Object.entries(question.answers)
-    .filter(([_, value]) => value !== null)
+    .filter(([value]) => value !== null)
     .map(([key, value]) => ({
       id: key,
       text: value as string
