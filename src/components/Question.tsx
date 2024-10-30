@@ -1,35 +1,50 @@
-import { useState } from 'react';
+import { useQuiz } from '../hooks/useQuiz';
 
 const Question: React.FC = () => {
-    const [selectedOption, setSelectedOption] = useState<number | null>(null);
+  const { 
+    questions, 
+    currentQuestion, 
+    userAnswers, 
+    setUserAnswers 
+  } = useQuiz();
 
-    const options: string[] = ['A. COBOL', 'B. COBOL', 'C. COBOL', 'D. COBOL'];
+  if (questions.length === 0) return <div>Loading...</div>;
 
-    const handleOptionClick = (index: number) => {
-        setSelectedOption(index);
-    };
+  const question = questions[currentQuestion];
+  const options = Object.entries(question.answers)
+    .filter(([_, value]) => value !== null)
+    .map(([key, value]) => ({
+      id: key,
+      text: value as string
+    }));
 
-    return (
-        <div className=" bg-white w-full">
-            <h2 className="text-lg font-semibold mb-2">Question 1 of 10</h2>
-            <p className="text-gray-700 mb-4">
-                Which of the following is a popular programming language for developing multimedia webpages.
-            </p>
-            <div className="grid grid-cols-2 gap-4 max-w-md">
-                {options.map((option, index) => (
-                    <button
-                        key={index}
-                        onClick={() => handleOptionClick(index)}
-                        className={`flex items-center justify-center p-3 border rounded-lg font-semibold ${
-                            selectedOption === index ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700'
-                        } hover:bg-blue-500 hover:text-white transition duration-150`}
-                    >
-                        {option}
-                    </button>
-                ))}
-            </div>
-        </div>
-    );
+  const handleOptionClick = (answerId: string) => {
+    setUserAnswers(question.id, answerId);
+  };
+
+  return (
+    <div className="bg-white w-full">
+      <h2 className="text-lg font-semibold mb-2">
+        Question {currentQuestion + 1} of {questions.length}
+      </h2>
+      <p className="text-gray-700 mb-4">{question.question}</p>
+      <div className="grid grid-cols-2 gap-4 w-full">
+        {options.map((option) => (
+          <button
+            key={option.id}
+            onClick={() => handleOptionClick(option.id)}
+            className={`flex items-center justify-center p-3 border rounded-lg font-semibold ${
+              userAnswers[question.id] === option.id 
+                ? 'bg-blue-600 text-white' 
+                : 'bg-gray-100 text-gray-700'
+            } hover:bg-blue-500 hover:text-white transition duration-150`}
+          >
+            {option.text}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Question;
