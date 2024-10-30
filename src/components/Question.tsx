@@ -1,4 +1,5 @@
 import { useQuiz } from '../hooks/useQuiz';
+import { FaQuestionCircle } from 'react-icons/fa';
 
 const Question: React.FC = () => {
   const { 
@@ -29,7 +30,8 @@ const Question: React.FC = () => {
 
   return (
     <div className="bg-white w-full">
-      <h2 className="text-lg font-semibold mb-2">
+      <h2 className="text-lg font-semibold mb-2 flex items-center">
+        <FaQuestionCircle className="mr-2 text-gray-600 h-6 w-6" />
         Question {currentQuestion + 1} of {questions.length}
       </h2>
       <p className="text-gray-700 mb-4">{question.question}</p>
