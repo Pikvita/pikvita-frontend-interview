@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { selectAnswer, nextQuestion } from '../redux/quizSlice';
+import { selectAnswer, nextQuestion } from '../../redux/quizSlice';
 
 const Question = ({ question }) => {
   const dispatch = useDispatch();

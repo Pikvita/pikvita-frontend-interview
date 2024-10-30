@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setQuestions, calculateScore } from '../redux/quizSlice';
+import { setQuestions, calculateScore } from '../../redux/quizSlice';
 import Question from './Question';
 import ProgressBar from './ProgressBar';
 import Score from './Score';

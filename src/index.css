@@ -2,8 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* body {
+  @apply bg-gray-100 text-gray-800;
+} */
+
+body {
+  @apply bg-gradient-to-r from-gray-100 to-gray-300 text-gray-800;
+  background-size: cover;
+}
+
+.quiz-container {
+  @apply max-w-xl mx-auto p-6 bg-white rounded-lg shadow-lg mt-10 relative z-10; /* Ensure container is above the gradient */
+}
+
+/* Other styles remain the same... */
+
+
+h2 {
+  @apply text-2xl font-semibold mb-4;
+}
+
+button {
+  @apply rounded-lg border border-transparent px-4 py-2 font-medium text-white transition duration-200 ease-in-out focus:outline-none;
+}
+
+button:hover {
+  @apply bg-blue-600;
+}
+
+.quiz-container {
+  @apply max-w-xl mx-auto p-6 bg-white rounded-lg shadow-lg mt-10;
+}
+
+.progress-bar-container {
+  @apply h-4 bg-gray-300 rounded-full mb-4;
+}
+
+.progress-bar {
+  @apply h-full bg-blue-500 rounded-full;
+}
+
+.score-container {
+  @apply text-center mt-6 p-4 bg-blue-100 border border-blue-300 rounded-lg;
+}
+
+.answer-button {
+  @apply w-full my-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded;
+}
+
+.finish-button {
+  @apply w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded;
+}
+
+.question-container {
+  @apply mb-6;
 }
