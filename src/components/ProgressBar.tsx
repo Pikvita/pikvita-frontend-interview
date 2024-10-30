@@ -13,7 +13,7 @@ const ProgressBar: React.FC = () => {
     <Flex gap="small" wrap>
       <div className='flex flex-col items-center'>
       <span className='pb-4 font-bold'>Progress Bar</span>
-      <Progress type="circle" percent={progress} />
+      <Progress type="circle" percent={progress} strokeColor="#08204e"/>
       </div>
     </Flex>
   );
