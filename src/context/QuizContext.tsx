@@ -5,14 +5,16 @@ import { fetchQuizData } from '../api/quizApi'
 interface QuizQuestion {
   id: number;
   question: string;
+  answers: { [key: string]: string | null };
   correct_answers: { [key: string]: string };
+  multiple_correct_answers: string;
 }
 
 interface QuizContextType {
   questions: QuizQuestion[];
   currentQuestion: number;
   setCurrentQuestion: React.Dispatch<React.SetStateAction<number>>;
-  userAnswers: { [key: number]: string };
+  userAnswers: { [key: number]: string[] };
   score: number;
   setUserAnswers: (questionId: number, answer: string) => void;
   nextQuestion: () => void;
@@ -24,10 +26,10 @@ interface QuizContextType {
 export const QuizContext = createContext<QuizContextType | undefined>(undefined)
 
 // Create a provider component
-export const QuizProvider = ({ children }: { children: ReactNode }) => {
+export const QuizProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [userAnswers, setUserAnswers] = useState<{[key: number]: string}>({});
+  const [userAnswers, setUserAnswers] = useState<{[key: number]: string[]}>({});
   const [score, setScore] = useState(0);
 
   useEffect(() => {
@@ -39,16 +41,36 @@ export const QuizProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const handleSetUserAnswers = (questionId: number, answer: string) => {
-    setUserAnswers(prev => ({...prev, [questionId]: answer}));
+    setUserAnswers(prev => {
+      const currentAnswers = prev[questionId] || [];
+      const isAlreadySelected = currentAnswers.includes(answer);
+      
+      if (questions[currentQuestion].multiple_correct_answers === "true") {
+        // Multiple answers allowed
+        return {
+          ...prev,
+          [questionId]: isAlreadySelected 
+            ? currentAnswers.filter(a => a !== answer)
+            : [...currentAnswers, answer]
+        };
+      } else {
+        // Single answer only
+        return {
+          ...prev,
+          [questionId]: [answer]
+        };
+      }
+    });
   };
 
   const calculateScore = () => {
     let newScore = 0;
     questions.forEach(question => {
-      const userAnswer = userAnswers[question.id];
-      if (userAnswer && question.correct_answers[`${userAnswer}_correct`] === "true") {
-        newScore++;
-      }
+      const userAnswerArray = userAnswers[question.id] || [];
+      const isCorrect = userAnswerArray.every(answer => 
+        question.correct_answers[`${answer}_correct`] === "true"
+      );
+      if (isCorrect) newScore++;
     });
     setScore(newScore);
   };
@@ -65,9 +87,5 @@ export const QuizProvider = ({ children }: { children: ReactNode }) => {
     calculateScore
   };
 
-  return (
-    <QuizContext.Provider value={value}>
-      {children}
-    </QuizContext.Provider>
-  );
+  return <QuizContext.Provider value={value}>{children}</QuizContext.Provider>;
 };
