@@ -5,7 +5,12 @@ interface PaginationTabProps {
 }
 
 const PaginationTab: React.FC<PaginationTabProps> = ({ totalPages = 10 }) => {
-  const { currentQuestion, setCurrentQuestion, questions } = useQuiz();
+  const { 
+    currentQuestion, 
+    setCurrentQuestion, 
+    questions,
+    isSubmitted 
+  } = useQuiz();
   const currentPage = currentQuestion + 1;
 
   const handleClick = (page: number) => {
@@ -24,8 +29,9 @@ const PaginationTab: React.FC<PaginationTabProps> = ({ totalPages = 10 }) => {
     <div className="flex items-center space-x-2">
       <button
         onClick={handlePrev}
-        disabled={currentPage === 1}
-        className="px-4 py-2 border rounded-lg text-gray-700 hover:bg-gray-200 disabled:opacity-50"
+        disabled={currentPage === 1 || isSubmitted}
+        className={`px-4 py-2 border rounded-lg text-gray-700 hover:bg-gray-200 
+          disabled:opacity-50 ${isSubmitted ? 'cursor-not-allowed' : ''}`}
       >
         Previous
       </button>
@@ -47,8 +53,9 @@ const PaginationTab: React.FC<PaginationTabProps> = ({ totalPages = 10 }) => {
 
       <button
         onClick={handleNext}
-        disabled={currentPage === questions.length}
-        className="px-4 py-2 border rounded-lg text-gray-700 hover:bg-gray-200 disabled:opacity-50"
+        disabled={currentPage === questions.length || isSubmitted}
+        className={`px-4 py-2 border rounded-lg text-gray-700 hover:bg-gray-200 
+          disabled:opacity-50 ${isSubmitted ? 'cursor-not-allowed' : ''}`}
       >
         Next
       </button>

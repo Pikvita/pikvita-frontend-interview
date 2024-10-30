@@ -5,7 +5,8 @@ const Question: React.FC = () => {
     questions, 
     currentQuestion, 
     userAnswers, 
-    setUserAnswers 
+    setUserAnswers,
+    isSubmitted 
   } = useQuiz();
 
   if (questions.length === 0) return <div>Loading...</div>;
@@ -32,7 +33,7 @@ const Question: React.FC = () => {
         Question {currentQuestion + 1} of {questions.length}
       </h2>
       <p className="text-gray-700 mb-4">{question.question}</p>
-      {question.multiple_correct_answers === "true" && (
+      {question.multiple_correct_answers === "true" && !isSubmitted && (
         <p className="text-sm text-blue-600 mb-2">
           Multiple answers allowed
         </p>
@@ -42,11 +43,13 @@ const Question: React.FC = () => {
           <button
             key={option.id}
             onClick={() => handleOptionClick(option.id)}
+            disabled={isSubmitted}
             className={`flex items-center justify-center p-3 border rounded-lg font-semibold ${
               isOptionSelected(option.id)
                 ? 'bg-blue-600 text-white' 
                 : 'bg-gray-100 text-gray-700'
-            } hover:bg-blue-500 hover:text-white transition duration-150`}
+            } hover:bg-blue-500 hover:text-white transition duration-150
+            ${isSubmitted ? 'cursor-not-allowed opacity-60' : ''}`}
           >
             {option.text}
           </button>

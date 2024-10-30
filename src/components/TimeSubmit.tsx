@@ -1,13 +1,15 @@
 import { FaClock } from 'react-icons/fa';
 import { useQuiz } from '../hooks/useQuiz';
+import { useNavigate } from 'react-router-dom';
 
 const TimeSubmit: React.FC = () => {
-  const { calculateScore, score, questions } = useQuiz();
+  const { calculateScore, setIsSubmitted, score, questions } = useQuiz();
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
     calculateScore();
-    // Add logic to show results modal/page
-    alert(`Your score: ${score}/${questions.length}`);
+    setIsSubmitted(true);
+    navigate('/results');
   };
 
   return (

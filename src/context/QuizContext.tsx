@@ -20,6 +20,8 @@ interface QuizContextType {
   nextQuestion: () => void;
   previousQuestion: () => void;
   calculateScore: () => void;
+  isSubmitted: boolean;
+  setIsSubmitted: (value: boolean) => void;
 }
 
 // Create the context with a default value
@@ -30,6 +32,7 @@ export const QuizProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [userAnswers, setUserAnswers] = useState<{[key: number]: string[]}>({});
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [score, setScore] = useState(0);
 
   useEffect(() => {
@@ -41,6 +44,9 @@ export const QuizProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   }, []);
 
   const handleSetUserAnswers = (questionId: number, answer: string) => {
+    
+    if (isSubmitted) return;
+
     setUserAnswers(prev => {
       const currentAnswers = prev[questionId] || [];
       const isAlreadySelected = currentAnswers.includes(answer);
@@ -84,6 +90,8 @@ export const QuizProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setUserAnswers: handleSetUserAnswers,
     nextQuestion: () => setCurrentQuestion(prev => Math.min(prev + 1, questions.length - 1)),
     previousQuestion: () => setCurrentQuestion(prev => Math.max(prev - 1, 0)),
+    isSubmitted,
+    setIsSubmitted,
     calculateScore
   };
 
