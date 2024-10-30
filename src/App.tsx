@@ -4,18 +4,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import Questions from "./pages/Questions";
 import Results from "./pages/Results";
-import CarouselPage from "./pages/CarouselPage";
-
-// const App = () => {
-//    return (
-//       <>
-//          <LandingPage />
-//       </>
-//    )
-// }
-
-// export default App
-
 
 
 const router = createBrowserRouter([
