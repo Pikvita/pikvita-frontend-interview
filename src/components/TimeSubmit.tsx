@@ -3,7 +3,7 @@ import { useQuiz } from '../hooks/useQuiz';
 import { useNavigate } from 'react-router-dom';
 
 const TimeSubmit: React.FC = () => {
-  const { calculateScore, setIsSubmitted, score, questions } = useQuiz();
+  const { calculateScore, setIsSubmitted, isSubmitted } = useQuiz();
   const navigate = useNavigate();
 
   const handleSubmit = () => {
@@ -27,18 +27,22 @@ const TimeSubmit: React.FC = () => {
           </div>
         </div>
         <div className="flex space-x-4">
-          <button 
-            onClick={handleSubmit}
-            className="bg-green-900 text-white py-2 px-4 rounded-lg hover:bg-green-800"
-          >
-            Submit
-          </button>
-          <button 
-            onClick={handleViewResult}
-            className="bg-blue-900 text-white py-2 px-4 rounded-lg hover:bg-blue-800"
-          >
-            View Result
-          </button>
+          {!isSubmitted && (
+            <button 
+              onClick={handleSubmit}
+              className="bg-green-900 text-white py-2 px-4 rounded-lg hover:bg-green-800"
+            >
+              Submit
+            </button>
+          )}
+          {isSubmitted && (
+            <button 
+              onClick={handleViewResult}
+              className="bg-blue-900 text-white py-2 px-4 rounded-lg hover:bg-blue-800"
+            >
+              View Result
+            </button>
+          )}
         </div>
       </div>
     </div>
