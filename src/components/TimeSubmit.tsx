@@ -12,6 +12,10 @@ const TimeSubmit: React.FC = () => {
     navigate('/results');
   };
 
+  const handleViewResult = () => {
+    navigate('/results');
+  };
+
   return (
     <div className="container mx-auto p-4 pt-[3rem] max-w-screen-lg">
       <div className="flex items-center justify-between p-4 border w-full bg-white">
@@ -22,12 +26,20 @@ const TimeSubmit: React.FC = () => {
             <span className="font-semibold text-lg text-gray-900">14:44:00</span>
           </div>
         </div>
-        <button 
-          onClick={handleSubmit}
-          className="bg-green-900 text-white py-2 px-4 rounded-lg hover:bg-green-800"
-        >
-          Submit
-        </button>
+        <div className="flex space-x-4">
+          <button 
+            onClick={handleSubmit}
+            className="bg-green-900 text-white py-2 px-4 rounded-lg hover:bg-green-800"
+          >
+            Submit
+          </button>
+          <button 
+            onClick={handleViewResult}
+            className="bg-blue-900 text-white py-2 px-4 rounded-lg hover:bg-blue-800"
+          >
+            View Result
+          </button>
+        </div>
       </div>
     </div>
   );

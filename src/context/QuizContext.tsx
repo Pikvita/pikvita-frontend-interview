@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect, ReactNode } from 'react'
 import { fetchQuizData } from '../api/quizApi'
+import { useLocalStorage } from '../hooks/useLocalStorage'
 
-// Define the shape of the context data
 interface QuizQuestion {
   id: number;
   question: string;
@@ -24,35 +24,57 @@ interface QuizContextType {
   setIsSubmitted: (value: boolean) => void;
 }
 
-// Create the context with a default value
 export const QuizContext = createContext<QuizContextType | undefined>(undefined)
 
-// Create a provider component
 export const QuizProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [userAnswers, setUserAnswers] = useState<{[key: number]: string[]}>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [score, setScore] = useState(0);
+  const [savedProgress, setSavedProgress] = useLocalStorage('quizProgress', {
+    questions: [],
+    currentQuestion: 0,
+    userAnswers: {},
+    isSubmitted: false,
+    score: 0,
+  });
 
   useEffect(() => {
     const loadQuestions = async () => {
       const data = await fetchQuizData();
       setQuestions(data);
     };
-    loadQuestions();
-  }, []);
+
+    if (savedProgress.questions.length > 0) {
+      setQuestions(savedProgress.questions);
+      setCurrentQuestion(savedProgress.currentQuestion);
+      setUserAnswers(savedProgress.userAnswers);
+      setIsSubmitted(savedProgress.isSubmitted);
+      setScore(savedProgress.score);
+    } else {
+      loadQuestions();
+    }
+  }, [savedProgress]);
+
+  useEffect(() => {
+    setSavedProgress({
+      questions,
+      currentQuestion,
+      userAnswers,
+      isSubmitted,
+      score,
+    });
+  }, [questions, currentQuestion, userAnswers, isSubmitted, score, setSavedProgress]);
 
   const handleSetUserAnswers = (questionId: number, answer: string) => {
-    
     if (isSubmitted) return;
 
     setUserAnswers(prev => {
       const currentAnswers = prev[questionId] || [];
       const isAlreadySelected = currentAnswers.includes(answer);
-      
+
       if (questions[currentQuestion].multiple_correct_answers === "true") {
-        // Multiple answers allowed
         return {
           ...prev,
           [questionId]: isAlreadySelected 
@@ -60,7 +82,6 @@ export const QuizProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             : [...currentAnswers, answer]
         };
       } else {
-        // Single answer only
         return {
           ...prev,
           [questionId]: [answer]
