@@ -11,6 +11,7 @@ interface QuizQuestion {
 interface QuizContextType {
   questions: QuizQuestion[];
   currentQuestion: number;
+  setCurrentQuestion: React.Dispatch<React.SetStateAction<number>>;
   userAnswers: { [key: number]: string };
   score: number;
   setUserAnswers: (questionId: number, answer: string) => void;
@@ -23,7 +24,7 @@ interface QuizContextType {
 export const QuizContext = createContext<QuizContextType | undefined>(undefined)
 
 // Create a provider component
-export const QuizProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const QuizProvider = ({ children }: { children: ReactNode }) => {
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [userAnswers, setUserAnswers] = useState<{[key: number]: string}>({});
@@ -55,6 +56,7 @@ export const QuizProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const value = {
     questions,
     currentQuestion,
+    setCurrentQuestion,
     userAnswers,
     score,
     setUserAnswers: handleSetUserAnswers,
@@ -63,5 +65,9 @@ export const QuizProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     calculateScore
   };
 
-  return <QuizContext.Provider value={value}>{children}</QuizContext.Provider>;
+  return (
+    <QuizContext.Provider value={value}>
+      {children}
+    </QuizContext.Provider>
+  );
 };
