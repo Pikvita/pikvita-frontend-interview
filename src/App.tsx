@@ -2,6 +2,9 @@
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
+import Questions from "./pages/Questions";
+import Results from "./pages/Results";
+import CarouselPage from "./pages/CarouselPage";
 
 // const App = () => {
 //    return (
@@ -22,28 +25,28 @@ const router = createBrowserRouter([
         path: "/",
         element: <LandingPage />,
       },
+      {
+        path: "/questions",
+        element: (
+        
+            <Questions />
+        
+        ),
+       },
+      {
+        path: "/results",
+        element: (
+        
+            <Results />
+      
+        ),
+      },
       // {
-      //   path: "/onboarding",
+      //   path: "/CarouselPage",
       //   element: (
-      //     <ProtectedRoute>
-      //       <Onboarding />
-      //     </ProtectedRoute>
-      //   ),
-      // },
-      // {
-      //   path: "/jobs",
-      //   element: (
-      //     <ProtectedRoute>
-      //       <JobListing />
-      //     </ProtectedRoute>
-      //   ),
-      // },
-      // {
-      //   path: "/post-job",
-      //   element: (
-      //     <ProtectedRoute>
-      //       <PostJob />
-      //     </ProtectedRoute>
+          
+      //       <CarouselPage />
+        
       //   ),
       // },
       // {
