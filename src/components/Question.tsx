@@ -21,7 +21,7 @@ const Question: React.FC = () => {
 
   const question = questions[currentQuestion];
   const options = Object.entries(question.answers)
-    .filter(([value]) => value !== null)
+    .filter(([_, value]) => value !== null)
     .map(([key, value]) => ({
       id: key,
       text: value as string
