@@ -71,11 +71,16 @@ export const QuizProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const calculateScore = () => {
     let newScore = 0;
-    questions.forEach(question => {
+    questions.forEach((question) => {
       const userAnswerArray = userAnswers[question.id] || [];
-      const isCorrect = userAnswerArray.every(answer => 
-        question.correct_answers[`${answer}_correct`] === "true"
+      const correctAnswers = Object.keys(question.correct_answers).filter(
+        (key) => question.correct_answers[key] === "true"
       );
+
+      const isCorrect =
+        userAnswerArray.length === correctAnswers.length &&
+        userAnswerArray.every((answer) => correctAnswers.includes(`${answer}_correct`));
+
       if (isCorrect) newScore++;
     });
     setScore(newScore);
