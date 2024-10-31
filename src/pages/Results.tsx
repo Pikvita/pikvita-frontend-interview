@@ -4,11 +4,12 @@ import { useLocation } from "react-router-dom";
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js";
 import { motion } from "framer-motion";
-import {AuroraBackground} from '../components/ui/aurora-background'; // Update this path to your AuroraBackground component
+
 
 // Register necessary components for Chart.js
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
+// Define interfaces to type-check the props passed into the component
 interface Question {
   question: string;
   answers: Record<string, string | null>;
@@ -21,10 +22,13 @@ interface LocationState {
   score: number;
 }
 
+//This component retrieves the state object containing quiz data from useLocation, including questions, answers, and score.
 const Results: React.FC = () => {
   const location = useLocation();
   const state = location.state as LocationState | null;
 
+
+//Functionality: Prevents users from navigating back to modify their answers after submission.
   useEffect(() => {
     if (!state) {
       console.log("State is null or undefined");
@@ -43,10 +47,12 @@ const Results: React.FC = () => {
     };
   }, [state]);
 
+  //Renders a loading message if state is null, preventing errors during data retrieval.
   if (!state) {
     return <div>Loading...</div>;
   }
-
+  
+//Configures the score and total question count as bars with different colors
   const { questions, answers, score } = state;
 
   const chartData = {

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import React from "react";
 import { AuroraBackground } from '../components/ui/aurora-background';
 import { Link } from "react-router-dom";
+import MovingCard from "../components/MovingCard";
 
 const  LandingPage = () => {
   return (
@@ -37,8 +38,11 @@ const  LandingPage = () => {
           Start now
         </button>
         </Link>
+       
       </motion.div>
+      
     </AuroraBackground>
+    
   );
 }
 

@@ -8,12 +8,15 @@ import { useNavigate } from "react-router-dom";
 import { AuroraBackground } from "../components/ui/aurora-background";
 import { motion } from "framer-motion";
 
+
+//Component Initialization 
 const Questions: React.FC = () => {
   const [questions, setQuestions] = useState<any[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<{ [key: number]: string[] }>({});
   const navigate = useNavigate();
 
+//Fetching Questions
   useEffect(() => {
     const loadQuestions = async () => {
       const data = await fetchQuestions();
@@ -22,6 +25,8 @@ const Questions: React.FC = () => {
     loadQuestions();
   }, []);
 
+
+  //Answer Selection Logic
   const handleAnswerSelect = (answerKey: string) => {
     setAnswers((prevAnswers) => {
       const selectedAnswers = prevAnswers[currentQuestionIndex] || [];
@@ -41,6 +46,7 @@ const Questions: React.FC = () => {
     });
   };
 
+  //Navigation Functions (Next, Back, Finish)
   const handleNext = () => {
     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
   };
@@ -52,7 +58,7 @@ const Questions: React.FC = () => {
   
 
 
-  //woeking
+  //Scoring Logic and Finish Function
   const handleFinish = () => {
     const score = questions.reduce((acc, question, index) => {
       const correctAnswers = question.correctAnswers || []; // Default to empty array if undefined
@@ -75,6 +81,7 @@ const Questions: React.FC = () => {
   const calculateScore = () => {
     let score = 0;
 
+
     // Loop through the questions to calculate the score
     questions.forEach((question, index) => {
       const correctAnswers = question.correctAnswers; // Assume this is an array of correct answers
@@ -87,6 +94,8 @@ const Questions: React.FC = () => {
     return score;
   };
 
+
+  //Progress Calculation and Render
   const currentQuestion = questions[currentQuestionIndex];
   const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
 
