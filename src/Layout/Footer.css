@@ -1,0 +1,29 @@
+/* Footer styles */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #1f2937; /* Tailwind bg-gray-800 */
+    color: #9ca3af; /* Tailwind text-gray-400 */
+    padding: 1rem; /* Tailwind py-4 */
+  }
+  
+  .container {
+    max-width: 1024px; /* Approximation for Tailwind container */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 1rem; /* Tailwind px-4 */
+    padding-right: 1rem; /* Tailwind px-4 */
+  }
+  
+  .footer-text {
+    font-size: 0.875rem; /* Tailwind text-sm */
+  }
+  
+  .footer-text.mt-2 {
+    margin-top: 0.5rem; /* Tailwind mt-2 */
+  }
+  

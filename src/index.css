@@ -2,8 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
+/* * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+} */
+
+#progress-bar-container {
+  width: 100%;
+  background: #f3f3f3;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 20px; /* Set the height of the progress bar */
+  margin-bottom: 20px;
+}
+
+#progress-bar {
+  height: 100%;
+  background: #4caf50;
+  transition: width 0.3s ease; /* Smooth transition */
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hidden-content {
+  z-index: 10;
 }

@@ -1,3 +1,9 @@
+## Output 
+
+<img src='Home.png'>
+<img src='Quiz.png'>
+<img src='Score.png>
+
 ## Problem Statement
 
 Develop a Quiz Application.
