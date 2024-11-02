@@ -4,7 +4,7 @@ import Footer from '../Layout/Footer'
 
 const Root = () => {
   return (
-    <div>
+    <div className="min-w-80">
       <Header />
       <Outlet />
       <Footer />
