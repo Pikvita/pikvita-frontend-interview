@@ -79,9 +79,9 @@ const QuizEnd = () => {
             {
               wrongAnswers.map(({ answer, correctAnswer, question }) => (
                 <li key={question}>
-                  <p className="text-slate-800">{question}</p>
-                  <p>Your answer: {answer || <span className="text-red-500">skipped</span>}</p>
-                  <p>Correct answer: {correctAnswer}</p>
+                  <p className="text-slate-800 font-bold">{question}</p>
+                  <p><span className='font-semibold text-slate-700'>Your answer:</span> {answer || <span className="text-red-500">skipped</span>}</p>
+                  <p><span className='font-semibold text-slate-700'>Correct answer:</span> {correctAnswer}</p>
                 </li>
               ))
             }
@@ -122,7 +122,7 @@ const QuizProgress = () => {
       />
       <div className="font-semibold text-slate-900 p-8">
         <h1>{show.progress.question}</h1>
-        <div className="space-y-4 font-bold text-slate-900">
+        <div className="space-y-2 font-bold text-slate-900 flex flex-col mt-4">
           {Object.entries(show.progress.answers)
             .filter((entry) => entry[1] !== null)
             .map(([key, answer]) => {
@@ -139,7 +139,7 @@ const QuizProgress = () => {
               )
             })}
         </div>
-        <div className="flex gap-x-4 mt-10">
+        <div className="flex gap-x-4 mt-12">
           <Button
             color="default"
             size="large"
@@ -162,7 +162,7 @@ const QuizProgress = () => {
             color="primary"
             size="large"
             onClick={() => show.progress.previousQuestion()}
-            variant="solid"
+            variant="filled"
             className="rounded-none p-4"
             disabled={show.progress.position === 'first'}
           >
