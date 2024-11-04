@@ -1,31 +1,21 @@
-import { InputHTMLAttributes } from 'react';
+import React, { InputHTMLAttributes } from 'react'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  // Additional props specific to Input component can be defined here
-  label?: string;
-  hasError?: boolean;
-  errorMessage?: string;
-  labelClassName?: string;
-  errorClassName?: string;
+  label?: string
 }
 
-const Input = ({
-  label,
-  hasError,
-  errorMessage,
-  labelClassName,
-  errorClassName,
-  ...rest
-}: InputProps) => {
-  const labelClass = labelClassName + 'rest goes here';
-  const errorClass = errorClassName + 'rest goes here';
+export function Input({ label, className = '', ...props }: InputProps) {
   return (
-    <div>
-      {label && <label className={labelClass} htmlFor={rest.name}></label>}
-      <input {...rest} />
-      {hasError && <p className={errorClass}>{errorMessage}</p>}
+    <div className="mb-4">
+      {label && (
+        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor={props.id}>
+          {label}
+        </label>
+      )}
+      <input
+        className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${className}`}
+        {...props}
+      />
     </div>
-  );
-};
-
-export default Input;
+  )
+}
