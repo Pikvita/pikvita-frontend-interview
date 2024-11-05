@@ -60,16 +60,7 @@ export default function Quiz() {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1)
     } else {
-      // Calculate score
-      const totalScore = questions.reduce((acc, question, index) => {
-        const userAnswer = answers[index]
-        const correctAnswer = Object.keys(question.correct_answers).find(
-          (key) => question.correct_answers[key] === 'true',
-        )
-        return acc + (userAnswer === correctAnswer ? 1 : 0)
-      }, 0)
-      setScore((totalScore / questions.length) * 100)
-      setIsQuizCompleted(true)
+      calculateScore()
     }
   }
 
@@ -77,6 +68,21 @@ export default function Quiz() {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1)
     }
+  }
+
+  const calculateScore = () => {
+    let totalScore = 0
+    questions.forEach((question, index) => {
+      const userAnswer = answers[index]
+      const correctAnswer = Object.keys(question.correct_answers).find(
+        (key) => question.correct_answers[key] === 'true',
+      )
+      if (userAnswer === correctAnswer?.replace('_correct', '')) {
+        totalScore += 1
+      }
+    })
+    setScore((totalScore / questions.length) * 100)
+    setIsQuizCompleted(true)
   }
 
   const handleRestart = () => {
@@ -109,7 +115,7 @@ export default function Quiz() {
 
   return (
     <div className="max-w-2xl mx-auto p-8">
-      <Progress percent={(currentQuestionIndex / questions.length) * 100} className="mb-8" />
+      <Progress percent={((currentQuestionIndex + 1) / questions.length) * 100} className="mb-8" />
       <Title level={4}>Question {currentQuestionIndex + 1}</Title>
       {currentQuestion && (
         <>
