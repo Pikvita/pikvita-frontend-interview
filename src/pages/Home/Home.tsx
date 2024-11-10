@@ -1,5 +1,12 @@
+import Quiz from "../../components/Quiz";
+
 const Home = () => {
-  return <div className="">Home</div>
+
+  return (
+    <div>
+      <Quiz />
+    </div>
+  )
 }
 
 export default Home
